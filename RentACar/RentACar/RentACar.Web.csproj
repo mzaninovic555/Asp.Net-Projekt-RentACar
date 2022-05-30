@@ -13,6 +13,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5" />
+    <PackageReference Include="Twitter.Bootstrap.MVC" Version="2.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RentACar.DAL\RentACar.DAL.csproj" />
+    <ProjectReference Include="..\RentACar.Model\RentACar.Model.csproj" />
   </ItemGroup>
 
 </Project>
