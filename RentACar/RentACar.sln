@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar", "RentACar\RentACar.csproj", "{E55C57CB-8656-47B4-BB4F-F01F96A5446F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Web", "RentACar\RentACar.Web.csproj", "{E55C57CB-8656-47B4-BB4F-F01F96A5446F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Model", "RentACar.Model\RentACar.Model.csproj", "{41BB672D-8601-4E8E-8D57-4AFF6EE16BEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.DAL", "RentACar.DAL\RentACar.DAL.csproj", "{31E852A3-A888-46D9-B4DC-42D6450A6A75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{E55C57CB-8656-47B4-BB4F-F01F96A5446F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E55C57CB-8656-47B4-BB4F-F01F96A5446F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E55C57CB-8656-47B4-BB4F-F01F96A5446F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41BB672D-8601-4E8E-8D57-4AFF6EE16BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41BB672D-8601-4E8E-8D57-4AFF6EE16BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41BB672D-8601-4E8E-8D57-4AFF6EE16BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41BB672D-8601-4E8E-8D57-4AFF6EE16BEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E852A3-A888-46D9-B4DC-42D6450A6A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E852A3-A888-46D9-B4DC-42D6450A6A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E852A3-A888-46D9-B4DC-42D6450A6A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E852A3-A888-46D9-B4DC-42D6450A6A75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

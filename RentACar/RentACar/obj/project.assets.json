@@ -2271,9 +2271,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.csproj",
-      "projectName": "RentACar",
-      "projectPath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.csproj",
+      "projectUniqueName": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.Web.csproj",
+      "projectName": "RentACar.Web",
+      "projectPath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.Web.csproj",
       "packagesPath": "C:\\Users\\mzani\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\obj\\",
       "projectStyle": "PackageReference",
