@@ -16,8 +16,8 @@ namespace RentACar.Model
 
         [StringLength(128)]
         public string Email { get; set; }
-        public TimeOnly OpenFrom { get; set; }
-        public TimeOnly OpenTo { get; set; }
+        public TimeSpan OpenFrom { get; set; }
+        public TimeSpan OpenTo { get; set; }
 
         [ForeignKey(nameof(City))]
         public int CityID { get; set; }
