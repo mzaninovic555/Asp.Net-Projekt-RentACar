@@ -52,12 +52,104 @@ namespace RentACar.DAL
                 new Country { ID = 2, Name = "United States" },
             };
 
+            List<Brand> brands = new List<Brand>
+            {
+                new Brand { Id = 1, Name = "Volkswagen" },
+                new Brand { Id = 2, Name = "Toyota" },
+                new Brand { Id = 3, Name = "Tesla" },
+                new Brand { Id = 4, Name = "Mercedes" },
+                new Brand { Id = 5, Name = "Skoda" }
+            };
+
+            List<Car> cars = new List<Car>
+            {
+                new Car { ID = 1, Model = "Golf", 
+                    PictureURL = "https://www.carparisonleasing.co.uk/media/responsive/blog_detail_image-1170/cc-uploads/24f6f155/volkswagen%20golf%20r.jpeg",
+                    SeatCount = 4,
+                    ProductionYear = 2020,
+                    IsManual = true,
+                    HasBluetooth = true,
+                    HasParkingSensors = true,
+                    IsElectric = false,
+                    HasGps = false,
+                    BrandID = 1
+                },
+                new Car { ID = 2, Model = "Prius", 
+                    PictureURL = "https://www.autotrader.com/wp-content/uploads/2021/06/2022-toyota-prius-prime-front-right-side.jpg",
+                    SeatCount = 5,
+                    ProductionYear = 2022,
+                    IsManual = false,
+                    HasBluetooth = true,
+                    HasParkingSensors = true,
+                    IsElectric = true,
+                    HasGps = true,
+                    BrandID = 2
+                },
+                new Car { ID = 3, Model = "Civic", 
+                    PictureURL = "https://www.oktan.hr/wp-content/uploads/2017/09/honda-civic-2017.jpg",
+                    SeatCount = 4,
+                    ProductionYear = 2017,
+                    IsManual = true,
+                    HasBluetooth = true,
+                    HasParkingSensors = false,
+                    IsElectric = false,
+                    HasGps = false,
+                    BrandID = 2
+                },
+                new Car { ID = 4, Model = "Model X", 
+                    PictureURL = "https://media.wired.co.uk/photos/606d9b03dbc4c121710a3d36/16:9/w_2560%2Cc_limit/tesla1.jpg",
+                    SeatCount = 4,
+                    ProductionYear = 2016,
+                    IsManual = false,
+                    HasBluetooth = true,
+                    HasParkingSensors = true,
+                    IsElectric = true,
+                    HasGps = true,
+                    BrandID = 3
+                },
+                new Car { ID = 5, Model = "C class", 
+                    PictureURL = "https://www.topgear.com/sites/default/files/cars-car/carousel/2018/06/18c0437_004.jpg",
+                    SeatCount = 4,
+                    ProductionYear = 2021,
+                    IsManual = true,
+                    HasBluetooth = true,
+                    HasParkingSensors = true,
+                    IsElectric = false,
+                    HasGps = true,
+                    BrandID = 4
+                },
+                new Car { ID = 6, Model = "Enyaq iV", 
+                    PictureURL = "https://static1.hotcarsimages.com/wordpress/wp-content/uploads/2021/10/Skoda-Enyaq-iV-3.jpg?q=50&fit=crop&w=750&dpr=1.5",
+                    SeatCount = 7,
+                    ProductionYear = 2020,
+                    IsManual = false,
+                    HasBluetooth = true,
+                    HasParkingSensors = true,
+                    IsElectric = true,
+                    HasGps = false,
+                    BrandID = 5
+                },
+                new Car { ID = 7, Model = "Octavia", 
+                    PictureURL = "https://cdn-hr.skoda.at/media/Theme_UIElement_Image_Small_Component.Theme_UIElement_Slideshow_Item_Image_Component/5767-86119-162082-162083-image-small/dh-991-400692/b3c3338d/1647894440/skoda-octavia-sportline-m62-exterior-01.jpg",
+                    SeatCount = 4,
+                    ProductionYear = 2022,
+                    IsManual = true,
+                    HasBluetooth = true,
+                    HasParkingSensors = true,
+                    IsElectric = false,
+                    HasGps = true,
+                    BrandID = 5
+                }
+            };
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Country>().HasData(countries);
             modelBuilder.Entity<Store>().HasData(stores);
             modelBuilder.Entity<City>().HasData(citiesCroatia);
             modelBuilder.Entity<City>().HasData(citiesUSA);
+            modelBuilder.Entity<Brand>().HasData(brands);
+            modelBuilder.Entity<Car>().HasData(cars);
         }
     }
 }
