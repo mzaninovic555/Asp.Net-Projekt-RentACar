@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RentACar.DAL;
-using RentACar.Data;
 using RentACar.Model;
 
 var builder = WebApplication.CreateBuilder(args);

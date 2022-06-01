@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RentACar.Model
+﻿namespace RentACar.Model
 {
     public class Cars
     {
         public int ID { get; set; }
         public string Model { get; set; }
+        public string PictureURL { get; set; }
         public int SeatCount { get; set; }
         public int ProductionYear { get; set; }
         public bool IsManual { get; set; }
