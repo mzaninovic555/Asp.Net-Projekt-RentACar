@@ -5,13 +5,6 @@ using RentACar.DAL;
 using RentACar.Model;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("RentACarDbContextConnection") ?? throw new InvalidOperationException("Connection string 'RentACarDbContextConnection' not found.");
-
-builder.Services.AddDbContext<RentACarDbContext>(options =>
-    options.UseSqlServer(connectionString));;
-
-builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<RentACarDbContext>();;
 
 // Add services to the container.
 builder.Services.AddDbContext<RentACarDbContext>(options =>

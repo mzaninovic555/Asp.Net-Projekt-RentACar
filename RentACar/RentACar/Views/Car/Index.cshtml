@@ -1,0 +1,88 @@
+﻿@model List<RentACar.Model.Car>
+
+<h1>Fleet</h1>
+<div class="row">
+    <div class="card">
+        @foreach (var car in Model)
+        {
+            <div class="row clearfix mt-3">
+                <div class="col-6">
+                    <h4>@car.Brand.Name @car.Model</h4>
+                    <img src="@car.PictureURL" class="" alt="@car.Model" width="100%">
+                </div>
+                <div class="col-6 small">
+                    <div>
+                        <h4>Characteristics</h4>
+                    </div>
+                    <div class="row clearfix">
+                        <ul class="col-12">
+                            <li class="row clearfix">
+                                <div class="col-16 text-muted">Year</div>
+                                <div class="col-8 text-right">@car.ProductionYear</div>
+                            </li>
+                            <li class="row clearfix">
+                                <div class="text-muted">Seat count</div>
+                                <div class="text-right">@car.SeatCount</div>
+                            </li>
+                            <li class="row clearfix">
+                                <div class="text-muted">Transmission</div>
+                                @if (car.IsManual)
+                                {
+                                    <div class="text-right">Manual</div>
+                                }
+                                else
+                                {
+                                    <div class="text-right">Automatic</div>
+                                }
+                            </li>
+                            <li class="row clearfix">
+                                <div class="text-muted">Bluetooth: </div>
+                                @if (car.HasBluetooth)
+                                {
+                                    <div class="text-right">Yes</div>
+                                }
+                                else
+                                {
+                                    <div class="text-right">No</div>
+                                }
+                            </li>
+                            <li class="row clearfix">
+                                <div class="text-muted">Parking help: </div>
+                                @if (car.HasParkingSensors)
+                                {
+                                    <div class="text-right">Yes</div>
+                                }
+                                else
+                                {
+                                    <div class="text-right">No</div>
+                                }
+                            </li>
+                            <li class="row clearfix">
+                                <div class="text-muted">Power type: </div>
+                                @if (car.IsElectric)
+                                {
+                                    <div class="text-right">Electric</div>
+                                }
+                                else
+                                {
+                                    <div class="text-right">Diesel</div>
+                                }
+                            </li>
+                            <li class="row clearfix">
+                                <div class="text-muted">GPS: </div>
+                                @if (car.HasGps)
+                                {
+                                    <div class="text-right">Yes</div>
+                                }
+                                else
+                                {
+                                    <div class="text-right">No</div>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
