@@ -12,6 +12,12 @@ builder.Services.AddDbContext<RentACarDbContext>(options =>
         builder.Configuration.GetConnectionString("RentACarDbContext"),
             opt => opt.MigrationsAssembly("RentACar.DAL")));
 
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+});
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>()

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "f9qhtBCZVPbzPmyD+dYr/hsBIsEDNUDQTvY0ANFLiTt09L72kOkSGsHWHX2f/0hxnOnfRyHiLsABucN34vD4uA==",
+  "dgSpecHash": "QkNuPa2R+AtZfo3sUewdXT6oZaSR5BYW5yqufXVVupVVOZAk0rd6s8UsgzDfEozn6QZzDl8eO1wGrAjObIsQBQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.Web.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\mzani\\.nuget\\packages\\microsoft.aspnet.razor\\3.1.0\\microsoft.aspnet.razor.3.1.0.nupkg.sha512",
     "C:\\Users\\mzani\\.nuget\\packages\\microsoft.aspnet.web.optimization\\1.1.2\\microsoft.aspnet.web.optimization.1.1.2.nupkg.sha512",
     "C:\\Users\\mzani\\.nuget\\packages\\microsoft.aspnet.webpages\\3.1.0\\microsoft.aspnet.webpages.3.1.0.nupkg.sha512",
+    "C:\\Users\\mzani\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.5\\microsoft.aspnetcore.authentication.google.6.0.5.nupkg.sha512",
     "C:\\Users\\mzani\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.5\\microsoft.aspnetcore.cryptography.internal.6.0.5.nupkg.sha512",
     "C:\\Users\\mzani\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.5\\microsoft.aspnetcore.cryptography.keyderivation.6.0.5.nupkg.sha512",
     "C:\\Users\\mzani\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\6.0.5\\microsoft.aspnetcore.diagnostics.entityframeworkcore.6.0.5.nupkg.sha512",
