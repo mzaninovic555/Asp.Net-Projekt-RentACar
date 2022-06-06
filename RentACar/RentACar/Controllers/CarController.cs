@@ -14,9 +14,16 @@ namespace RentACar.Web.Controllers
             this.dbContext = dbContext;
         }
 
-        public IActionResult Index()
+        [Route("auti/{carID?}")]
+        public IActionResult Index(int? carID)
         {
             IQueryable<Car> cars = dbContext.Cars.Include(c => c.Brand).AsQueryable();
+
+            if (carID.HasValue)
+            {
+                cars = cars.Where(c => c.ID == carID);
+            }
+       
 
             return View("Index", cars.ToList());
         }

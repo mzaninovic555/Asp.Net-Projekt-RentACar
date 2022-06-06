@@ -23,4 +23,8 @@
     <ProjectReference Include="..\RentACar.Model\RentACar.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\assets\RentACar.png" />
+  </ItemGroup>
+
 </Project>

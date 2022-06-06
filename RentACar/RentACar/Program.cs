@@ -60,6 +60,10 @@ app.UseEndpoints(endpoints =>
     endpoints.MapRazorPages();
 });
 
+app.MapControllerRoute(
+    name: "pregledRezervacija",
+    pattern: "rezervacije/pregled",
+    defaults: new { controller = "Reservation", action = "Index" });
 
 app.MapControllerRoute(
     name: "default",

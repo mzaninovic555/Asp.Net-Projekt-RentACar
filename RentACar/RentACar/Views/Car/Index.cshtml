@@ -6,77 +6,77 @@
         @foreach (var car in Model)
         {
             <div class="row clearfix mt-3">
-                <div class="col-6">
+                <div class="col-6 col-md-6 col-sm-12">
                     <h4>@car.Brand.Name @car.Model</h4>
                     <img src="@car.PictureURL" class="" alt="@car.Model" width="100%">
                 </div>
-                <div class="col-6 small">
+                <div class="col-2 col-md-4 col-sm-12 ms-2 mt-3 small">
                     <div>
                         <h4>Characteristics</h4>
                     </div>
-                    <div class="row clearfix">
+                    <div class="row clearfix p-3">
                         <ul class="col-12">
                             <li class="row clearfix">
-                                <div class="col-16 text-muted">Year</div>
-                                <div class="col-8 text-right">@car.ProductionYear</div>
+                                <div class="text-muted col-6">Year</div>
+                                <div class="text-end col-6">@car.ProductionYear</div>
                             </li>
                             <li class="row clearfix">
-                                <div class="text-muted">Seat count</div>
-                                <div class="text-right">@car.SeatCount</div>
+                                <div class="text-muted col-6">Seat count</div>
+                                <div class="text-end col-6">@car.SeatCount</div>
                             </li>
                             <li class="row clearfix">
-                                <div class="text-muted">Transmission</div>
+                                <div class="text-muted col-6">Transmission</div>
                                 @if (car.IsManual)
                                 {
-                                    <div class="text-right">Manual</div>
+                                    <div class="text-end col-6">Manual</div>
                                 }
                                 else
                                 {
-                                    <div class="text-right">Automatic</div>
+                                    <div class="text-end col-6">Automatic</div>
                                 }
                             </li>
                             <li class="row clearfix">
-                                <div class="text-muted">Bluetooth: </div>
+                                <div class="text-muted col-6">Bluetooth: </div>
                                 @if (car.HasBluetooth)
                                 {
-                                    <div class="text-right">Yes</div>
+                                    <div class="text-end col-6">Yes</div>
                                 }
                                 else
                                 {
-                                    <div class="text-right">No</div>
+                                    <div class="text-end col-6">No</div>
                                 }
                             </li>
                             <li class="row clearfix">
-                                <div class="text-muted">Parking help: </div>
+                                <div class="text-muted col-6">Parking help: </div>
                                 @if (car.HasParkingSensors)
                                 {
-                                    <div class="text-right">Yes</div>
+                                    <div class="text-end col-6">Yes</div>
                                 }
                                 else
                                 {
-                                    <div class="text-right">No</div>
+                                    <div class="text-end col-6">No</div>
                                 }
                             </li>
                             <li class="row clearfix">
-                                <div class="text-muted">Power type: </div>
+                                <div class="text-muted col-6">Power type: </div>
                                 @if (car.IsElectric)
                                 {
-                                    <div class="text-right">Electric</div>
+                                    <div class="text-end col-6">Electric</div>
                                 }
                                 else
                                 {
-                                    <div class="text-right">Diesel</div>
+                                    <div class="text-end col-6">Diesel</div>
                                 }
                             </li>
                             <li class="row clearfix">
-                                <div class="text-muted">GPS: </div>
+                                <div class="text-muted col-6">GPS: </div>
                                 @if (car.HasGps)
                                 {
-                                    <div class="text-right">Yes</div>
+                                    <div class="text-end col-6">Yes</div>
                                 }
                                 else
                                 {
-                                    <div class="text-right">No</div>
+                                    <div class="text-end col-6">No</div>
                                 }
                             </li>
                         </ul>
