@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Web", "RentACar\RentACar.Web.csproj", "{E55C57CB-8656-47B4-BB4F-F01F96A5446F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.Web", "RentACar\RentACar.Web.csproj", "{E55C57CB-8656-47B4-BB4F-F01F96A5446F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Model", "RentACar.Model\RentACar.Model.csproj", "{41BB672D-8601-4E8E-8D57-4AFF6EE16BEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.Model", "RentACar.Model\RentACar.Model.csproj", "{41BB672D-8601-4E8E-8D57-4AFF6EE16BEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.DAL", "RentACar.DAL\RentACar.DAL.csproj", "{31E852A3-A888-46D9-B4DC-42D6450A6A75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.DAL", "RentACar.DAL\RentACar.DAL.csproj", "{31E852A3-A888-46D9-B4DC-42D6450A6A75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9548079A-B9C0-4EE1-9312-048603E40FA0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
