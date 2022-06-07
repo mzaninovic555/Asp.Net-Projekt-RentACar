@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RentACar.DAL;
@@ -41,11 +42,12 @@ namespace RentACar.Web.Controllers
 
         [HttpPost]
         [ActionName("Create")]
-        public IActionResult Create(Car model)
+        public IActionResult Create(Car modelCar)
         {
+            var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
             if (ModelState.IsValid)
             {
-                dbContext.Add(model);
+                dbContext.Add(modelCar);
                 dbContext.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
@@ -57,6 +59,30 @@ namespace RentACar.Web.Controllers
             }
         }
 
+        [ActionName(nameof(Edit))]
+        public IActionResult Edit(int carID)
+        {
+            var model = dbContext.Cars.FirstOrDefault(c => c.ID == carID);
+            FillDropdownValues();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName(nameof(Edit))]
+        public async Task<IActionResult> EditPost(int id)
+        {
+            var car = dbContext.Cars.Single(c => c.ID == id);
+            var ok = await TryUpdateModelAsync(car);
+
+            if (ok && ModelState.IsValid)
+            {
+                dbContext.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            FillDropdownValues();
+            return View();
+        }
 
         private void FillDropdownValues()
         {

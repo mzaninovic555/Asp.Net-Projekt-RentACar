@@ -1,14 +1,23 @@
-﻿@model List<RentACar.Model.Car>
+﻿@model List<Car>
 
-<h1>Fleet</h1>
+<div class="row">
+    <h1 class="col-2">Fleet</h1>
+    <button type="button" class="btn btn-success col-2 mb-2"><a class="nav-link text-light" asp-area=""
+            asp-controller="Car" asp-action="Create">Add car</a></button>
+</div>
 <div class="row">
     <div class="card">
         @foreach (var car in Model)
         {
-            <div class="row clearfix mt-3">
+            <div class="row clearfix border-bottom mt-2">
                 <div class="col-6 col-md-6 col-sm-12">
-                    <h4>@car.Brand.Name @car.Model</h4>
-                    <button type="button" class="btn btn-success"><a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Create">Add car</a></button>
+                    <div class="row mb-2">
+                        <h4 class="col">@car.Brand.Name @car.Model</h4>
+                        <button type="button" class="btn btn-primary col me-2"><a class="nav-link text-light" asp-area=""
+                            asp-controller="Car" asp-action="Edit" asp-route-carID="@car.ID">Edit car</a></button>
+                        <button type="button" class="btn btn-danger col"><a class="nav-link text-light" asp-area=""
+                            asp-controller="Car" asp-action="Delete" asp-route-carID="@car.ID">Delete car</a></button>
+                    </div>
                     <img src="@car.PictureURL" class="" alt="@car.Model" width="100%">
                 </div>
                 <div class="col-2 col-md-4 col-sm-12 ms-2 mt-3 small">

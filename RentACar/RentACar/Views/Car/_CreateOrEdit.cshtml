@@ -1,0 +1,54 @@
+﻿@model Car;
+
+<div class="form group mb-2">
+                <label class="control-label">Brand</label>
+                <select asp-for="BrandID" asp-items="ViewBag.Brands" class="form-control"></select>
+                <span asp-validation-for="BrandID" class="text-danger"></span>
+            </div>
+            <div class="form group mb-2">
+                <label class="control-label">Car Model</label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form group mb-2">
+                <label class="control-label">Picture URL</label>
+                <input asp-for="PictureURL" class="form-control" />
+                <span asp-validation-for="PictureURL" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label class="control-label">Production year</label>
+                <input asp-for="ProductionYear" class="form-control" />
+                <span asp-validation-for="ProductionYear" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label class="control-label">Seat count</label>
+                <input asp-for="SeatCount" class="form-control" />
+                <span asp-validation-for="SeatCount" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label class="control-label">Is it manual</label>
+                <input asp-for="IsManual" class="form-check-input" />
+                <span asp-validation-for="IsManual" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label class="control-label">Does it have bluetooth</label>
+                <input type="checkbox" asp-for="HasBluetooth" class="form-check-input" />
+                <span asp-validation-for="HasBluetooth" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label class="control-label">Does it have parking assistance</label>
+                <input type="checkbox" asp-for="HasParkingSensors" class="form-check-input" />
+                <span asp-validation-for="HasParkingSensors" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label class="control-label">Is it electric</label>
+                <input type="checkbox" asp-for="IsElectric" class="form-check-input" />
+                <span asp-validation-for="IsElectric" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label class="control-label">Does it have GPS</label>
+                <input type="checkbox" asp-for="HasGps" class="form-check-input" />
+                <span asp-validation-for="HasGps" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit car</button>
