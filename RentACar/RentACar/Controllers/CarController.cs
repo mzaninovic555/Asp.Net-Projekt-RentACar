@@ -99,6 +99,22 @@ namespace RentACar.Web.Controllers
             return PartialView("_IndexTable", model);
         }
 
+        [HttpDelete]
+        public IActionResult DeleteAjax(int carID)
+        {
+            Car carToDelete = dbContext.Cars.Where(c => c.ID == carID).FirstOrDefault();
+
+            if(carToDelete == null)
+            {
+                return View();
+            }
+
+            dbContext.Cars.Remove(carToDelete);
+            dbContext.SaveChanges();
+
+            return IndexAjax(new CarFilterModel());
+        }
+
         private void FillDropdownValues()
         {
             var selectItems = new List<SelectListItem>();

@@ -31,5 +31,18 @@
             }
         });
     }
+
+    function deleteCar(carID) {
+        var link = "@Url.Action("DeleteAjax", new { carID = -123 })";
+        link = link.replace("-123", carID);
+
+        $.ajax({
+            url: link,
+            method: "DELETE",
+            success: function(html) {
+                $("#tableContainer").html(html);
+            }
+        });
+    }
 </script>
 }

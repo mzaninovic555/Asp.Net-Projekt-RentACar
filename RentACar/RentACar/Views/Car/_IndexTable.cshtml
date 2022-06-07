@@ -8,8 +8,7 @@
                         <h4 class="col">@car.Brand.Name @car.Model</h4>
                         <button type="button" class="btn btn-primary col me-2"><a class="nav-link text-light" asp-area=""
                             asp-controller="Car" asp-action="Edit" asp-route-carID="@car.ID">Edit car</a></button>
-                        <button type="button" class="btn btn-danger col"><a class="nav-link text-light" asp-area=""
-                            asp-controller="Car" asp-action="Delete" asp-route-carID="@car.ID">Delete car</a></button>
+                        <button type="button" class="btn btn-danger col" onclick="deleteCar(@car.ID)">Delete car</button>
                     </div>
                     <img src="@car.PictureURL" class="" alt="@car.Model" width="100%">
                 </div>
