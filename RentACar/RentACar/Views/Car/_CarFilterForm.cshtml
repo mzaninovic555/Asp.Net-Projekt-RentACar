@@ -1,0 +1,16 @@
+﻿@model CarFilterModel;
+
+<form action="@Url.Action("Index")" method="post" id="filterForm">
+	<div class="row">
+		<div class="col">
+			<input asp-for="CarBrand" class="form-control" type="text" placeholder="Brand" />
+		</div>
+		<div class="col">
+			<input asp-for="CarModel" class="form-control" type="text" placeholder="Model" />
+		</div>
+		<div class="col">
+		<div class="col">
+			<button type="button" onClick="filterCars()" class="btn btn-outline-info">Search</button>
+		</div>
+	</div>
+</form>

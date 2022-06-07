@@ -1,98 +1,35 @@
-﻿@model List<Car>
+﻿@model List<Car>;
 
 <div class="row">
     <h1 class="col-2">Fleet</h1>
     <button type="button" class="btn btn-success col-2 mb-2"><a class="nav-link text-light" asp-area=""
             asp-controller="Car" asp-action="Create">Add car</a></button>
 </div>
+<div class="mt-2 mb-3">
+	<partial name="_CarFilterForm" model="new CarFilterModel()" />
+</div>
 <div class="row">
-    <div class="card">
-        @foreach (var car in Model)
-        {
-            <div class="row clearfix border-bottom mt-2">
-                <div class="col-6 col-md-6 col-sm-12">
-                    <div class="row mb-2">
-                        <h4 class="col">@car.Brand.Name @car.Model</h4>
-                        <button type="button" class="btn btn-primary col me-2"><a class="nav-link text-light" asp-area=""
-                            asp-controller="Car" asp-action="Edit" asp-route-carID="@car.ID">Edit car</a></button>
-                        <button type="button" class="btn btn-danger col"><a class="nav-link text-light" asp-area=""
-                            asp-controller="Car" asp-action="Delete" asp-route-carID="@car.ID">Delete car</a></button>
-                    </div>
-                    <img src="@car.PictureURL" class="" alt="@car.Model" width="100%">
-                </div>
-                <div class="col-2 col-md-4 col-sm-12 ms-2 mt-3 small">
-                    <div>
-                        <h4>Characteristics</h4>
-                    </div>
-                    <div class="row clearfix p-3">
-                        <ul class="col-12">
-                            <li class="row clearfix">
-                                <div class="text-muted col-6">Year</div>
-                                <div class="text-end col-6">@car.ProductionYear</div>
-                            </li>
-                            <li class="row clearfix">
-                                <div class="text-muted col-6">Seat count</div>
-                                <div class="text-end col-6">@car.SeatCount</div>
-                            </li>
-                            <li class="row clearfix">
-                                <div class="text-muted col-6">Transmission</div>
-                                @if (car.IsManual)
-                                {
-                                    <div class="text-end col-6">Manual</div>
-                                }
-                                else
-                                {
-                                    <div class="text-end col-6">Automatic</div>
-                                }
-                            </li>
-                            <li class="row clearfix">
-                                <div class="text-muted col-6">Bluetooth: </div>
-                                @if (car.HasBluetooth)
-                                {
-                                    <div class="text-end col-6">Yes</div>
-                                }
-                                else
-                                {
-                                    <div class="text-end col-6">No</div>
-                                }
-                            </li>
-                            <li class="row clearfix">
-                                <div class="text-muted col-6">Parking help: </div>
-                                @if (car.HasParkingSensors)
-                                {
-                                    <div class="text-end col-6">Yes</div>
-                                }
-                                else
-                                {
-                                    <div class="text-end col-6">No</div>
-                                }
-                            </li>
-                            <li class="row clearfix">
-                                <div class="text-muted col-6">Power type: </div>
-                                @if (car.IsElectric)
-                                {
-                                    <div class="text-end col-6">Electric</div>
-                                }
-                                else
-                                {
-                                    <div class="text-end col-6">Diesel</div>
-                                }
-                            </li>
-                            <li class="row clearfix">
-                                <div class="text-muted col-6">GPS: </div>
-                                @if (car.HasGps)
-                                {
-                                    <div class="text-end col-6">Yes</div>
-                                }
-                                else
-                                {
-                                    <div class="text-end col-6">No</div>
-                                }
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        }
+    <div class="card" id="tableContainer">
+        <partial name="_IndexTable" model="new List<Car>()" />
     </div>
 </div>
+
+@section scripts {
+<script>
+
+    $(document).ready(filterCars());
+
+    function filterCars() {
+        console.log("Filter cars...");
+        var formData = $("#filterForm").serialize();
+        $.ajax({
+            url: "@Url.Action("IndexAjax", new CarFilterModel())",
+            method: "POST",
+            data: formData,
+            success: function(html) {
+                $("#tableContainer").html(html);
+            }
+        });
+    }
+</script>
+}

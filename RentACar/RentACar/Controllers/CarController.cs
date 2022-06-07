@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RentACar.DAL;
 using RentACar.Model;
+using RentACar.Models;
 
 namespace RentACar.Web.Controllers
 {
@@ -20,18 +21,12 @@ namespace RentACar.Web.Controllers
         }
 
         [Route("auti/{carID?}")]
-        public IActionResult Index(int? carID)
+        public IActionResult Index()
         {
-            IQueryable<Car> cars = dbContext.Cars.Include(c => c.Brand).AsQueryable();
-
-            if (carID.HasValue)
-            {
-                cars = cars.Where(c => c.ID == carID);
-            }
-       
-
-            return View("Index", cars.ToList());
+            return View();
         }
+
+
 
         [ActionName("Create")]
         public IActionResult Create()
@@ -82,6 +77,26 @@ namespace RentACar.Web.Controllers
 
             FillDropdownValues();
             return View();
+        }
+
+
+
+        [HttpPost]
+        public IActionResult IndexAjax(CarFilterModel filter)
+        {
+            var carQuery = dbContext.Cars.Include(p => p.Brand).AsQueryable();
+
+            //Primjer iterativnog građenja upita - dodaje se "where clause" samo u slučaju da je parametar doista proslijeđen.
+            //To rezultira optimalnijim stablom izraza koje se kvalitetnije potencijalno prevodi u SQL
+            if (!string.IsNullOrWhiteSpace(filter.CarBrand))
+                carQuery = carQuery.Where(c => c.Brand.Name.ToLower().Contains(filter.CarBrand.ToLower()));
+
+            if (!string.IsNullOrWhiteSpace(filter.CarModel))
+                carQuery = carQuery.Where(c => c.Model.ToLower().Contains(filter.CarModel.ToLower()));
+
+            var model = carQuery.ToList();
+
+            return PartialView("_IndexTable", model);
         }
 
         private void FillDropdownValues()
