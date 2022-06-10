@@ -1,0 +1,31 @@
+﻿@model List<Reservation>;
+
+<table style="margin-top: 20px;" class="table table-condensed">
+    <thead>
+        <th>Pickup Date and Time</th>
+        <th>Address, City</th>
+        <th>Reserved Car</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.PickupDateTime</td>
+                <td>@reservation.Store.Address, @reservation.Store.City.Name</td>
+                <td>@reservation.Car.Brand.Name @reservation.Car.Model</td>
+                <td>
+					<button type="button" class="btn btn-primary">
+                        <a asp-action="Edit" asp-route-id="@reservation.ID" class="nav-link text-light">Edit</a>
+                    </button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-danger">
+                        <a asp-action="Delete" asp-route-clientId="@reservation.ID" class="nav-link text-light">Delete</a>
+                    </button>
+				</td>
+            </tr>
+        }
+    </tbody>
+</table>

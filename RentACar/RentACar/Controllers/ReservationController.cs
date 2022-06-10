@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using RentACar.DAL;
 using RentACar.Model;
+using RentACar.Web.Models;
 
 namespace RentACar.Web.Controllers
 {
@@ -19,9 +22,103 @@ namespace RentACar.Web.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult IndexAjax(ReservationFilterModel filter)
+        {
+            var reservationQuery = dbContext.Reservations
+                .Include(r => r.Car).Include(r => r.Store)
+                .Include(r => r.Store.City)
+                .Include(r => r.Car.Brand)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(filter.StoreCityName))
+            {
+                reservationQuery = reservationQuery
+                    .Where(r => r.Store.City.Name.ToLower().Contains(filter.StoreCityName.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(filter.CarName))
+            {
+                reservationQuery = reservationQuery
+                    .Where(r => (r.Car.Brand.Name + " " + r.Car.Model).ToLower().Contains(filter.CarName.ToLower()));
+            }
+
+            var model = reservationQuery.ToList();
+
+            return PartialView("_IndexTable", model);
+        }
+
+        [ActionName("Create")]
+        public IActionResult Create()
+        {
+            FillDropdownCarValues();
+            FillDropdownStoreValues();
 
             return View();
+        }
+
+        [HttpPost]
+        [ActionName("Create")]
+        public IActionResult Create(Reservation modelReservation)
+        {
+            modelReservation.UserID = "23987423784";
+            var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
+            if (ModelState.IsValid)
+            {
+                dbContext.Add(modelReservation);
+                dbContext.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                FillDropdownCarValues();
+                FillDropdownStoreValues();
+                return View();
+            }
+        }
+
+        private void FillDropdownCarValues()
+        {
+            var selectItems = new List<SelectListItem>();
+
+            //Polje je opcionalno
+            var listItem = new SelectListItem();
+            listItem.Text = "- odaberite -";
+            listItem.Value = "";
+            selectItems.Add(listItem);
+
+            foreach (var car in this.dbContext.Cars.Include(c => c.Brand))
+            {
+                string carLabel = car.Brand.Name + " " + car.Model;
+                listItem = new SelectListItem(carLabel, car.ID.ToString());
+                selectItems.Add(listItem);
+            }
+
+            ViewBag.Cars = selectItems;
+        }
+
+        private void FillDropdownStoreValues()
+        {
+            var selectItems = new List<SelectListItem>();
+
+            //Polje je opcionalno
+            var listItem = new SelectListItem();
+            listItem.Text = "- odaberite -";
+            listItem.Value = "";
+            selectItems.Add(listItem);
+
+            foreach (var store in this.dbContext.Stores.Include(s => s.City))
+            {
+                string carLabel = store.Address + ", " + store.City.Name;
+                listItem = new SelectListItem(carLabel, store.ID.ToString());
+                selectItems.Add(listItem);
+            }
+
+            ViewBag.Stores = selectItems;
         }
     }
 }

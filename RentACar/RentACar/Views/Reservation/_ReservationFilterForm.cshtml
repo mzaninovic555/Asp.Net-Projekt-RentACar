@@ -1,0 +1,17 @@
+﻿@using RentACar.Web.Models
+@model ReservationFilterModel;
+
+<form action="@Url.Action("Index")" method="post" id="filterForm">
+	<div class="row">
+		<div class="col">
+			<input asp-for="StoreCityName" class="form-control" type="text" placeholder="City to search" />
+		</div>
+		<div class="col">
+			<input asp-for="CarName" class="form-control" type="text" placeholder="Car to Search" />
+		</div>
+		<div class="col">
+		<div class="col">
+			<button type="button" onClick="filterReservations()" class="btn btn-outline-info">Search</button>
+		</div>
+	</div>
+</form>

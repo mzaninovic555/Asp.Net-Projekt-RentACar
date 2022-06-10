@@ -1,0 +1,14 @@
+﻿@model Reservation;
+
+@{
+    ViewData["Title"] = "Add a new reservation.";
+}
+
+<div class="row">
+    <h4>Add a new reservation</h4>
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <partial name="_CreateOrEdit" />
+        </form>
+    </div>
+</div>

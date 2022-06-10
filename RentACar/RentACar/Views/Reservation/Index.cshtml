@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using RentACar.Web.Models
+@model List<Reservation>;
+
+<div class="row">
+    <h4 class="col-3">Reservations for "User"</h4>
+    <button type="button" class="btn btn-success col-2 mb-2"><a class="nav-link text-light" asp-area=""
+            asp-controller="Reservation" asp-action="Create">Add reservation</a></button>
+</div>
+<div class="mt-2 mb-4">
+	<partial name="_ReservationFilterForm" model="new ReservationFilterModel()" />
+</div>
+<div class="row mt-3">
+    <div id="tableContainer">
+        <partial name="_IndexTable" model="new List<Reservation>()" />
+    </div>
+</div>
+
+@section scripts {
+<script>
+
+    $(document).ready(filterReservations());
+
+    function filterReservations() {
+        console.log("Filter reservations...");
+        var formData = $("#filterForm").serialize();
+        $.ajax({
+            url: "@Url.Action("IndexAjax", new ReservationFilterModel())",
+            method: "POST",
+            data: formData,
+            success: function(html) {
+                $("#tableContainer").html(html);
+            }
+        });
+    }
+
+    /*function deleteCar(carID) {
+        var link = "@Url.Action("DeleteAjax", new { carID = -123 })";
+        link = link.replace("-123", carID);
+
+        $.ajax({
+            url: link,
+            method: "DELETE",
+            success: function(html) {
+                $("#tableContainer").html(html);
+            }
+        });
+    }*/
+</script>
 }
