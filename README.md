@@ -8,3 +8,7 @@ Stvaranje nove skripte:
 
 Ažuriranje baze sa novim skriptama
 - dotnet ef database update --startup-project ..\RentACar --context RentACarDbContext
+
+#Dodati role u tablicu
+- admin - Admin - ADMIIN
+- user - User - USER
