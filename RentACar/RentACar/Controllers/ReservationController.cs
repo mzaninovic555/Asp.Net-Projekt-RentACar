@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using RentACar.Web.Models;
 
 namespace RentACar.Web.Controllers
 {
+    [Authorize(Roles = "Admin,User")]
     public class ReservationController : Controller
     {
         private RentACarDbContext dbContext;
@@ -26,19 +28,29 @@ namespace RentACar.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult IndexAjax(ReservationFilterModel filter)
+        public async Task<IActionResult> IndexAjax(ReservationFilterModel filter)
         {
-            var reservationQuery = dbContext.Reservations
-                .Include(r => r.Car).Include(r => r.Store)
-                .Include(r => r.Store.City)
-                .Include(r => r.Store.City.Country)
-                .Include(r => r.Car.Brand)
-                .AsQueryable();
+            AppUser user = await userManager.FindByIdAsync(userManager.GetUserId(base.User));
+            var listRoles = await userManager.GetRolesAsync(user);
+
+
+            IQueryable<Reservation> reservationQuery = 
+                dbContext.Reservations
+                    .Include(r => r.Car).Include(r => r.Store)
+                    .Include(r => r.Store.City)
+                    .Include(r => r.Store.City.Country)
+                    .Include(r => r.Car.Brand);
+
+            if (!listRoles.Contains("Admin"))
+            {
+                var userId = userManager.GetUserId(base.User);
+                reservationQuery = reservationQuery.Where(r => r.UserID == userId).AsQueryable();
+            }
 
             if (!string.IsNullOrWhiteSpace(filter.StoreCityName))
             {
                 reservationQuery = reservationQuery
-                    .Where(r => r.Store.City.Name.ToLower().Contains(filter.StoreCityName.ToLower()));
+                .Where(r => r.Store.City.Name.ToLower().Contains(filter.StoreCityName.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(filter.CarName))
@@ -65,10 +77,10 @@ namespace RentACar.Web.Controllers
         [ActionName("Create")]
         public IActionResult Create(Reservation modelReservation)
         {
-            modelReservation.UserID = "23987423784";
             var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
             if (ModelState.IsValid)
             {
+                modelReservation.UserID = userManager.GetUserId(base.User);
                 dbContext.Add(modelReservation);
                 dbContext.SaveChanges();
 
@@ -112,7 +124,7 @@ namespace RentACar.Web.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteAjax(int reservationID)
+        public async Task<IActionResult> DeleteAjax(int reservationID)
         {
             Reservation reservationToDelete = dbContext.Reservations
                 .Where(r => r.ID == reservationID).FirstOrDefault();
@@ -125,7 +137,7 @@ namespace RentACar.Web.Controllers
             dbContext.Reservations.Remove(reservationToDelete);
             dbContext.SaveChanges();
 
-            return IndexAjax(new ReservationFilterModel());
+            return await IndexAjax(new ReservationFilterModel());
         }
 
         private void FillDropdownCarValues()

@@ -85,6 +85,11 @@ namespace RentACar.Web.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Required]
+            [RegularExpression("[0-9]{11}", ErrorMessage = "OIB has to be 11 digits long.")]
+            [StringLength(255)]
+            public string OIB { get; set; }
         }
         
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -156,7 +161,8 @@ namespace RentACar.Web.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-
+                user.OIB = Input.OIB;
+                
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

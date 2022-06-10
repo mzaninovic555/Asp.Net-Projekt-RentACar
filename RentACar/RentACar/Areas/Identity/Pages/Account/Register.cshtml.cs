@@ -98,6 +98,11 @@ namespace RentACar.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [RegularExpression("[0-9]{11}", ErrorMessage = "OIB has to be 11 digits long.")]
+            [StringLength(255)]
+            public string OIB { get; set; }
         }
 
 
@@ -117,6 +122,8 @@ namespace RentACar.Web.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                user.OIB = Input.OIB;
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

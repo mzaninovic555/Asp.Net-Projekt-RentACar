@@ -9,6 +9,7 @@ namespace RentACar.Model
         public int ID { get; set; }
 
         [StringLength(255)]
+        [MinLength(3, ErrorMessage = "Name has to be atleast 3 characters.")]
         public string Address { get; set; }
 
         [StringLength(15)]

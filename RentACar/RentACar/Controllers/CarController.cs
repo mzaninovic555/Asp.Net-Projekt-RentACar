@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,13 +22,14 @@ namespace RentACar.Web.Controllers
         }
 
         [Route("auti")]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
-
         [ActionName("Create")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             FillDropdownValues();
@@ -36,6 +38,7 @@ namespace RentACar.Web.Controllers
 
         [HttpPost]
         [ActionName("Create")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(Car modelCar)
         {
             var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
@@ -54,6 +57,7 @@ namespace RentACar.Web.Controllers
         }
 
         [ActionName("CreateBrand")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateBrand()
         {
             return View();
@@ -61,6 +65,7 @@ namespace RentACar.Web.Controllers
 
         [HttpPost]
         [ActionName("CreateBrand")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateBrand(Brand modelBrand)
         {
             var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
@@ -79,6 +84,7 @@ namespace RentACar.Web.Controllers
         }
 
         [ActionName(nameof(Edit))]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int carID)
         {
             var model = dbContext.Cars.FirstOrDefault(c => c.ID == carID);
@@ -88,6 +94,7 @@ namespace RentACar.Web.Controllers
 
         [HttpPost]
         [ActionName(nameof(Edit))]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditPost(int id)
         {
             var car = dbContext.Cars.Single(c => c.ID == id);
@@ -103,8 +110,7 @@ namespace RentACar.Web.Controllers
             return View();
         }
 
-
-
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult IndexAjax(CarFilterModel filter)
         {
@@ -124,6 +130,7 @@ namespace RentACar.Web.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteAjax(int carID)
         {
             Car carToDelete = dbContext.Cars.Where(c => c.ID == carID).FirstOrDefault();
