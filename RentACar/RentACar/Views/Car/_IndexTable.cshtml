@@ -2,7 +2,7 @@
 
 @foreach (var car in Model)
         {
-            <div class="row clearfix border-bottom mt-2">
+            <div class="row clearfix border-bottom mt-2 p-3">
                 <div class="col-6 col-md-6 col-sm-12">
                     <div class="row mb-2">
                         <h4 class="col">@car.Brand.Name @car.Model</h4>
@@ -12,11 +12,11 @@
                     </div>
                     <img src="@car.PictureURL" class="" alt="@car.Model" width="100%">
                 </div>
-                <div class="col-2 col-md-4 col-sm-12 ms-2 mt-3 small">
+                <div class="col-2 col-md-4 col-sm-12 m-3 small">
                     <div>
                         <h4>Characteristics</h4>
                     </div>
-                    <div class="row clearfix p-3">
+                    <div class="row clearfix">
                         <ul class="col-12">
                             <li class="row clearfix">
                                 <div class="text-muted col-6">Year</div>

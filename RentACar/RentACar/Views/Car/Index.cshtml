@@ -5,10 +5,10 @@
     <button type="button" class="btn btn-success col-2 mb-2"><a class="nav-link text-light" asp-area=""
             asp-controller="Car" asp-action="Create">Add car</a></button>
 </div>
-<div class="mt-2 mb-3">
+<div class="mt-2 mb-4">
 	<partial name="_CarFilterForm" model="new CarFilterModel()" />
 </div>
-<div class="row">
+<div class="row mt-3">
     <div class="card" id="tableContainer">
         <partial name="_IndexTable" model="new List<Car>()" />
     </div>

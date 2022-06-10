@@ -20,7 +20,7 @@ namespace RentACar.Web.Controllers
             this.userManager = userManager;
         }
 
-        [Route("auti/{carID?}")]
+        [Route("auti")]
         public IActionResult Index()
         {
             return View();

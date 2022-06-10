@@ -58,7 +58,8 @@ namespace RentACar.DAL
                 new Brand { Id = 2, Name = "Toyota" },
                 new Brand { Id = 3, Name = "Tesla" },
                 new Brand { Id = 4, Name = "Mercedes" },
-                new Brand { Id = 5, Name = "Skoda" }
+                new Brand { Id = 5, Name = "Skoda" },
+                new Brand { Id = 6, Name = "Honda" }
             };
 
             List<Car> cars = new List<Car>
@@ -94,7 +95,7 @@ namespace RentACar.DAL
                     HasParkingSensors = false,
                     IsElectric = false,
                     HasGps = false,
-                    BrandID = 2
+                    BrandID = 6
                 },
                 new Car { ID = 4, Model = "Model X", 
                     PictureURL = "https://media.wired.co.uk/photos/606d9b03dbc4c121710a3d36/16:9/w_2560%2Cc_limit/tesla1.jpg",
