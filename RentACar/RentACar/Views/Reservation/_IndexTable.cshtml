@@ -3,7 +3,9 @@
 <table style="margin-top: 20px;" class="table table-condensed">
     <thead>
         <th>Pickup Date and Time</th>
-        <th>Address, City</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Country</th>
         <th>Reserved Car</th>
         <th></th>
         <th></th>
@@ -13,8 +15,10 @@
         {
             <tr>
                 <td>@reservation.PickupDateTime</td>
-                <td>@reservation.Store.Address, @reservation.Store.City.Name</td>
+                <td>@reservation.Store.Address</td>
                 <td>@reservation.Car.Brand.Name @reservation.Car.Model</td>
+                <td>@reservation.Store.City.Name</td>
+                <td>@reservation.Store.City.Country.Name</td>
                 <td>
 					<button type="button" class="btn btn-primary">
                         <a asp-action="Edit" asp-route-id="@reservation.ID" class="nav-link text-light">Edit</a>

@@ -31,6 +31,7 @@ namespace RentACar.Web.Controllers
             var reservationQuery = dbContext.Reservations
                 .Include(r => r.Car).Include(r => r.Store)
                 .Include(r => r.Store.City)
+                .Include(r => r.Store.City.Country)
                 .Include(r => r.Car.Brand)
                 .AsQueryable();
 
