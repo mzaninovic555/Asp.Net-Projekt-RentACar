@@ -81,6 +81,52 @@ namespace RentACar.Web.Controllers
             }
         }
 
+        [ActionName(nameof(Edit))]
+        public IActionResult Edit(int id)
+        {
+            var model = dbContext.Reservations.FirstOrDefault(r => r.ID == id);
+            FillDropdownCarValues();
+            FillDropdownStoreValues();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName(nameof(Edit))]
+        public async Task<IActionResult> EditPost(int id)
+        {
+            var reservation = dbContext.Reservations.Single(r => r.ID == id);
+            var ok = await TryUpdateModelAsync(reservation);
+
+            if (ok && ModelState.IsValid)
+            {
+                dbContext.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            FillDropdownCarValues();
+            FillDropdownStoreValues();
+
+            return View();
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteAjax(int reservationID)
+        {
+            Reservation reservationToDelete = dbContext.Reservations
+                .Where(r => r.ID == reservationID).FirstOrDefault();
+
+            if (reservationToDelete == null)
+            {
+                return View();
+            }
+
+            dbContext.Reservations.Remove(reservationToDelete);
+            dbContext.SaveChanges();
+
+            return IndexAjax(new ReservationFilterModel());
+        }
+
         private void FillDropdownCarValues()
         {
             var selectItems = new List<SelectListItem>();

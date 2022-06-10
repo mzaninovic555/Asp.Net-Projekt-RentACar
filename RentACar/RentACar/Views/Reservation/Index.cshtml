@@ -33,9 +33,9 @@
         });
     }
 
-    /*function deleteCar(carID) {
-        var link = "@Url.Action("DeleteAjax", new { carID = -123 })";
-        link = link.replace("-123", carID);
+    function deleteReservation(reservationID) {
+        var link = "@Url.Action("DeleteAjax", new { reservationID = -123 })";
+        link = link.replace("-123", reservationID);
 
         $.ajax({
             url: link,
@@ -44,6 +44,6 @@
                 $("#tableContainer").html(html);
             }
         });
-    }*/
+    }
 </script>
 }

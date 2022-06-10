@@ -21,8 +21,8 @@
                     </button>
 				</td>
 				<td>
-					<button type="button" class="btn btn-danger">
-                        <a asp-action="Delete" asp-route-clientId="@reservation.ID" class="nav-link text-light">Delete</a>
+					<button type="button" class="btn btn-danger" onclick="deleteReservation(@reservation.ID)">
+                        <a class="nav-link text-light">Delete</a>
                     </button>
 				</td>
             </tr>
