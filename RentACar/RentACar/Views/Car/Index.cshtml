@@ -2,8 +2,10 @@
 
 <div class="row">
     <h1 class="col-2">Fleet</h1>
-    <button type="button" class="btn btn-success col-2 mb-2"><a class="nav-link text-light" asp-area=""
+    <button type="button" class="btn btn-success col-2 mb-2 me-2"><a class="nav-link text-light" asp-area=""
             asp-controller="Car" asp-action="Create">Add car</a></button>
+    <button type="button" class="btn btn-success col-2 mb-2"><a class="nav-link text-light" asp-area=""
+            asp-controller="Car" asp-action="CreateBrand">Add brand</a></button>
 </div>
 <div class="mt-2 mb-4">
 	<partial name="_CarFilterForm" model="new CarFilterModel()" />

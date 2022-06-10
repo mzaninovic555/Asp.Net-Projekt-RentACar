@@ -27,7 +27,6 @@ namespace RentACar.Web.Controllers
         }
 
 
-
         [ActionName("Create")]
         public IActionResult Create()
         {
@@ -43,6 +42,31 @@ namespace RentACar.Web.Controllers
             if (ModelState.IsValid)
             {
                 dbContext.Add(modelCar);
+                dbContext.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                FillDropdownValues();
+                return View();
+            }
+        }
+
+        [ActionName("CreateBrand")]
+        public IActionResult CreateBrand()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ActionName("CreateBrand")]
+        public IActionResult CreateBrand(Brand modelBrand)
+        {
+            var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
+            if (ModelState.IsValid)
+            {
+                dbContext.Add(modelBrand);
                 dbContext.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
