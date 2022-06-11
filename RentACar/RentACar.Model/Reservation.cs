@@ -45,7 +45,7 @@ namespace RentACar.Model
                 }
             }
 
-            return new ValidationResult("Date has to be before today.");
+            return new ValidationResult("Date has to be after today.");
         }
     }
 }
