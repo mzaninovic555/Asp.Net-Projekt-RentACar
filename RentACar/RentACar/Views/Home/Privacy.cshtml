@@ -1,6 +1,23 @@
-﻿@{
+﻿@model List<RentACar.Model.Store>;
+@{
     ViewData["Title"] = "Privacy Policy";
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
+
+<div class="row mt-4">
+    <h4>Find us at the following locations!</h4>
+    @foreach (var store in Model)
+    {
+        <ul class="list-group mt-3">
+            <li class="list-group-item list-group-item-dark">
+                <h5>@store.City.Name, @store.City.Country.Name</h5>
+            </li>
+            <li class="list-group-item">Phone number: @store.PhoneNumber</li>
+            <li class="list-group-item">E-mail: @store.Email</li>
+            <li class="list-group-item">Working hours: @store.OpenFrom.ToString(@"hh\:mm") - @store.OpenTo.ToString(@"hh\:mm")</li>
+            <li class="list-group-item">Address: @store.Address</li>
+        </ul>
+    }
+</div>

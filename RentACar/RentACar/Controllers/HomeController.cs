@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RentACar.DAL;
+using RentACar.Model;
 using RentACar.Models;
 using System.Diagnostics;
 
@@ -6,11 +9,13 @@ namespace RentACar.Controllers
 {
     public class HomeController : Controller
     {
+        private RentACarDbContext dbContext;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, RentACarDbContext dbContext)
         {
             _logger = logger;
+            this.dbContext = dbContext;
         }
 
         public IActionResult Index()
@@ -20,7 +25,11 @@ namespace RentACar.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            IQueryable<Store> storeQuery = dbContext.Stores
+            .Include(s => s.City)
+            .Include(s => s.City.Country);
+
+            return View(storeQuery.ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

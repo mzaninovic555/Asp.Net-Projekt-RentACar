@@ -3,10 +3,10 @@
 <table style="margin-top: 20px;" class="table table-condensed">
     <thead>
         <th>Pickup Date and Time</th>
+        <th>Reserved Car</th>
         <th>Address</th>
         <th>City</th>
         <th>Country</th>
-        <th>Reserved Car</th>
         <th></th>
         <th></th>
     </thead>
@@ -14,9 +14,9 @@
         @foreach (var reservation in Model)
         {
             <tr>
-                <td>@reservation.PickupDateTime</td>
-                <td>@reservation.Store.Address</td>
+                <td>@reservation.PickupDateTime.ToShortDateString() @reservation.PickupDateTime.ToShortTimeString()</td>
                 <td>@reservation.Car.Brand.Name @reservation.Car.Model</td>
+                <td>@reservation.Store.Address</td>
                 <td>@reservation.Store.City.Name</td>
                 <td>@reservation.Store.City.Country.Name</td>
                 <td>
