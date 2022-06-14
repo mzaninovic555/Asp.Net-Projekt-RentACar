@@ -10230,11 +10230,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.Web.csproj",
+      "projectUniqueName": "c:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.Web.csproj",
       "projectName": "RentACar.Web",
-      "projectPath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.Web.csproj",
+      "projectPath": "c:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\RentACar.Web.csproj",
       "packagesPath": "C:\\Users\\mzani\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\obj\\",
+      "outputPath": "c:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -10255,11 +10255,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.DAL\\RentACar.DAL.csproj": {
-              "projectPath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.DAL\\RentACar.DAL.csproj"
+            "c:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.DAL\\RentACar.DAL.csproj": {
+              "projectPath": "c:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.DAL\\RentACar.DAL.csproj"
             },
-            "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.Model\\RentACar.Model.csproj": {
-              "projectPath": "C:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.Model\\RentACar.Model.csproj"
+            "c:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.Model\\RentACar.Model.csproj": {
+              "projectPath": "c:\\Users\\mzani\\source\\repos\\Asp.Net-Projekt-RentACar\\RentACar\\RentACar.Model\\RentACar.Model.csproj"
             }
           }
         }
